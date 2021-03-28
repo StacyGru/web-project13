@@ -16,8 +16,8 @@ export enum MyWorkerType
 }
 
 export let MyWorkerDataBase: MyWorker[] = [
-    { id: 1, name: 'Иван', surname: 'Иванов', phone: '89053489678', type: 0 },
-    { id: 2, name: 'Петр', surname: 'Петров', phone: '89251864785', type: 1 },
-    { id: 3, name: 'Сидор', surname: 'Сидоров', phone: '89271576348', type: 2 },
-    { id: 4, name: 'Василий', surname: 'Васильев', phone: '89634978536', type: 3 }
+    { id: 1, name: 'Иван', surname: 'Иванов', phone: '+7 (905) 348-96-78', type: 0 },
+    { id: 2, name: 'Петр', surname: 'Петров', phone: '+7 (925) 186-47-85', type: 1 },
+    { id: 3, name: 'Сидор', surname: 'Сидоров', phone: '+7 (927) 157-63-48', type: 2 },
+    { id: 4, name: 'Василий', surname: 'Васильев', phone: '+7 (963) 497-85-36', type: 3 }
 ];

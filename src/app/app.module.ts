@@ -7,6 +7,9 @@ import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.compo
 import { FormsModule } from '@angular/forms';
 import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextMaskModule } from 'angular2-text-mask';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     EditformWorkerComponent,
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule
+    BrowserModule, 
+    FormsModule,  
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    TextMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

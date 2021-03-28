@@ -12,6 +12,7 @@ export class AddformWorkerComponent implements OnInit {
   id: number;
   MyWorkerType = MyWorkerType;
   AddForm : FormGroup;
+  public mask = ['+', 7, ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 
   @Output() addWorker = new EventEmitter<MyWorker>();
 
@@ -21,7 +22,7 @@ export class AddformWorkerComponent implements OnInit {
     ({   
       "workerName": new FormControl("", Validators.required),
       "workerSurname": new FormControl("", Validators.required),
-      "workerPhone": new FormControl("", Validators.pattern("89[0-9]{9}")),
+      "workerPhone": new FormControl("", Validators.required,),
       "workerType": new FormControl(0, Validators.required)
   })
   }
@@ -31,7 +32,7 @@ export class AddformWorkerComponent implements OnInit {
 
   onAddWorker()
   {
-    {
+    
       this.addWorker.emit
       ({
         name: this.AddForm.get('workerName').value,
@@ -39,6 +40,6 @@ export class AddformWorkerComponent implements OnInit {
         phone: this.AddForm.get('workerPhone').value,
         type: this.AddForm.get('workerType').value,
       });
-    }
+    
   }
 }

@@ -15,6 +15,7 @@ export class EditformWorkerComponent implements OnInit {
   type = 0;
   MyWorkerType = MyWorkerType;
   EditForm : FormGroup;
+  public mask = ['+', 7, ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 
   @Output() editWorker = new EventEmitter<MyWorker>();
   @Output() cancelEdit = new EventEmitter();
@@ -29,15 +30,13 @@ export class EditformWorkerComponent implements OnInit {
     ({   
       "workerName": new FormControl(this.workerData["name"], Validators.required),
       "workerSurname": new FormControl(this.workerData["surname"], Validators.required),
-      "workerPhone": new FormControl(this.workerData["phone"], Validators.pattern("89[0-9]{9}")),
+      "workerPhone": new FormControl(this.workerData["phone"], Validators.required),
       "workerType": new FormControl(this.workerData["type"], Validators.required)
   })
   }
 
   onEditWorker() // привязано к форме редактирования
   {
-    if (this.name !== '' && this.surname !== '')
-    {
       this.editWorker.emit({
         id: this.id,
         name: this.EditForm.get('workerName').value,
@@ -45,11 +44,6 @@ export class EditformWorkerComponent implements OnInit {
         phone: this.EditForm.get('workerPhone').value,
         type: this.EditForm.get('workerType').value,
       });
-    }
-    else
-    {
-      alert('Поля "Имя" и "Фамилия" не должны быть пусты!');
-    }
   }
 
   closeEdit()
