@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MyWorker, MyWorkerType } from 'src/app/shared/worker.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-addform-worker',
@@ -9,31 +10,35 @@ import { MyWorker, MyWorkerType } from 'src/app/shared/worker.model';
 export class AddformWorkerComponent implements OnInit {
 
   id: number;
-  name: string;
-  surname: string;
-  type = 0;
   MyWorkerType = MyWorkerType;
+  AddForm : FormGroup;
 
   @Output() addWorker = new EventEmitter<MyWorker>();
 
-  constructor() { }
+  constructor() 
+  {
+    this.AddForm = new FormGroup
+    ({   
+      "workerName": new FormControl("", Validators.required),
+      "workerSurname": new FormControl("", Validators.required),
+      "workerPhone": new FormControl("", Validators.pattern("89[0-9]{9}")),
+      "workerType": new FormControl(0, Validators.required)
+  })
+  }
 
   ngOnInit(): void {
   }
 
   onAddWorker()
   {
-    if (this.name !== '' && this.surname !== '')
     {
-      this.addWorker.emit({
-        name: this.name,
-        surname: this.surname,
-        type: this.type,
+      this.addWorker.emit
+      ({
+        name: this.AddForm.get('workerName').value,
+        surname: this.AddForm.get('workerSurname').value,
+        phone: this.AddForm.get('workerPhone').value,
+        type: this.AddForm.get('workerType').value,
       });
-    }
-    else
-    {
-      alert('Поля "Имя" и "Фамилия" не должны быть пусты!');
     }
   }
 }

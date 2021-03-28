@@ -17,6 +17,7 @@ export class AppComponent {
     id: this.workers[0].id,
     name: this.workers[0].name,
     surname: this.workers[0].surname,
+    phone: this.workers[0].phone,
     type: this.workers[0].type
   };
 
@@ -58,6 +59,7 @@ export class AppComponent {
       id: this.workers[index].id,
       name: this.workers[index].name,
       surname: this.workers[index].surname,
+      phone: this.workers[index].phone,
       type: this.workers[index].type
     }
     this.edit = true;

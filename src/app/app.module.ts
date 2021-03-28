@@ -6,6 +6,7 @@ import { TableWorkersComponent } from './ui/table-workers/table-workers.componen
 import { AddformWorkerComponent } from './ui/addform-worker/addform-worker.component';
 import { FormsModule } from '@angular/forms';
 import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { EditformWorkerComponent } from './ui/editform-worker/editform-worker.co
     EditformWorkerComponent,
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

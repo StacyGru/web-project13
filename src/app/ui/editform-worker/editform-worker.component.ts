@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MyWorker, MyWorkerType } from 'src/app/shared/worker.model';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-editform-worker',
@@ -13,6 +14,7 @@ export class EditformWorkerComponent implements OnInit {
   surname: string;
   type = 0;
   MyWorkerType = MyWorkerType;
+  EditForm : FormGroup;
 
   @Output() editWorker = new EventEmitter<MyWorker>();
   @Output() cancelEdit = new EventEmitter();
@@ -23,9 +25,13 @@ export class EditformWorkerComponent implements OnInit {
   ngOnInit(): void
   {
     this.id = this.workerData["id"];
-    this.name = this.workerData["name"];
-    this.surname = this.workerData["surname"];
-    this.type = this.workerData["type"];
+    this.EditForm = new FormGroup
+    ({   
+      "workerName": new FormControl(this.workerData["name"], Validators.required),
+      "workerSurname": new FormControl(this.workerData["surname"], Validators.required),
+      "workerPhone": new FormControl(this.workerData["phone"], Validators.pattern("89[0-9]{9}")),
+      "workerType": new FormControl(this.workerData["type"], Validators.required)
+  })
   }
 
   onEditWorker() // привязано к форме редактирования
@@ -34,9 +40,10 @@ export class EditformWorkerComponent implements OnInit {
     {
       this.editWorker.emit({
         id: this.id,
-        name: this.name,
-        surname: this.surname,
-        type: this.type,
+        name: this.EditForm.get('workerName').value,
+        surname: this.EditForm.get('workerSurname').value,
+        phone: this.EditForm.get('workerPhone').value,
+        type: this.EditForm.get('workerType').value,
       });
     }
     else

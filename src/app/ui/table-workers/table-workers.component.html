@@ -6,8 +6,9 @@
         <thead>
         <tr>
             <th scope="col" [style.width]="'10%'">id</th>
-            <th scope="col" [style.width]="'30%'">Имя</th>
-            <th scope="col" [style.width]="'30%'">Фамилия</th>
+            <th scope="col" [style.width]="'20%'">Имя</th>
+            <th scope="col" [style.width]="'20%'">Фамилия</th>
+            <th scope="col" [style.width]="'20%'">Телефон</th>
             <th scope="col" [style.width]="'15%'"></th>
             <th scope="col" [style.width]="'15%'"></th>
         </tr>
@@ -18,6 +19,7 @@
             <th scope="row">{{ worker.id }}</th>
             <td>{{ worker.name }}</td>
             <td>{{ worker.surname }}</td>
+            <td>{{ worker.phone }}</td>
             <td><button (click)="onDeleteWorker(worker.id)"
                 class="btn btn-outline-danger btn-sm">Удалить</button> 
             </td>
